@@ -6,7 +6,7 @@ class Scanner extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Flutter Demo',
+      title: 'Scanner',
       theme: ThemeData(
         primarySwatch: Colors.purple,
       ),
