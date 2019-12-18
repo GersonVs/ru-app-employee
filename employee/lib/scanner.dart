@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_barcode_scanner/flutter_barcode_scanner.dart';
+import 'main.dart';
 
 class Scanner extends StatelessWidget {
   @override
@@ -40,26 +41,57 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
 
     return Scaffold(
-      body: Center(
-        
-        child: Column(
+      appBar: AppBar(
+        leading: Padding(
+                padding: EdgeInsets.only(left: 12),
+                child: IconButton(
+                  icon: Icon(Icons.refresh),
+                  onPressed: () {
+                    Navigator.of(context)
+                    .push(MaterialPageRoute(builder: (context) => Scanner()));
+                  },
+                ),
+              ),
+              title: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children:<Widget>[
+                   Text('Funcionário', style: TextStyle(fontWeight: FontWeight.bold),),
+                   
+                ]
+              ),
+              actions: <Widget>[
+                IconButton(
+                  icon: Icon(Icons.exit_to_app),
+                  onPressed: () {
+                    Navigator.of(context)
+                    .push(MaterialPageRoute(builder: (context) => HomePage()));
+                  },
+                ),
+              ],
+              
+            ),
+            body: Center(
+              
+              child: Column(
 
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text(
-              'Valor do QrCode: ',
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                Text(
+                  'Valor do QrCode: ',
+                  style: TextStyle(fontWeight: FontWeight.bold),
+                ),
+                Text(
+                  _value,
+                  style: Theme.of(context).textTheme.display1,
+                ),
+              ],
+              ),
             ),
-            Text(
-              _value,
-              style: Theme.of(context).textTheme.display1,
-            ),
-          ],
-        ),
-      ),
+
       floatingActionButton: FloatingActionButton(
         backgroundColor: Colors.purple,
         onPressed: _incrementCounter,
-        tooltip: 'Increment',
+        tooltip: 'Scanner',
         child: Icon(Icons.settings_overscan),
       ), 
     );
